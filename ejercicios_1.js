@@ -155,7 +155,7 @@ const esPrimo = (numero) => {
                 return;
             }  
     }
-        console.info("El numero es primo");
+    console.info("El numero es primo");
 }
 
 esPrimo(10);
@@ -175,4 +175,14 @@ const esParImpar = (numero) =>{
 }
 
 esParImpar(5);
+
+/**
+ * 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
+*/
+
+function convertirTemperatura(temperatura){
+    return (temperatura * 9/5) + 32;
+}
+
+console.log(convertirTemperatura(10));
 
