@@ -186,3 +186,21 @@ function convertirTemperatura(temperatura){
 
 console.log(convertirTemperatura(10));
 
+/**
+ * Hacer una funcion que permita calcular el factorial de un numero cualquiera que se de
+ */
+
+const factorial = (numero) => {
+    let resultado = 1;
+    if(numero == undefined){
+        console.warn("El numero no se ha insertado");
+    }else{
+        for(let i = 1; i<=numero; i++){
+            resultado *= i;
+        }
+    }
+    return resultado;
+}
+
+console.log(factorial(8));
+
