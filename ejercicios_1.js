@@ -258,11 +258,102 @@ aplicarDescuento(1000,20);
  * hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
  */
 
-const calcularEdad = (fecha) => {
+/*const calcularEdad = (fecha) => {
     const fecha = new Date();
     let edad = fecha.getFullYear() - fecha.getFullYear();
     return edad;  
 }
 
-console.log(calcularEdad(new Date(1984,4,23)));
+console.log(calcularEdad(new Date(1984,4,23)));*/
 
+/**
+ * 18) Programa una función que dada una cadena de texto cuente el número de vocales 
+ * y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.
+ */
+
+console.info("Ejercicio 18 - contar vocales y consonantes de una cadena de texto");
+
+const contarVocalesConsonantes = (cadena = undefined) => {
+  let vocales = 0;
+  let consonantes = 0;
+  if(cadena == undefined){
+    console.warn("La cadena no se ha insertado");
+  }else{
+    for(let i=0; i<cadena.length; i++){
+      if(cadena[i] == "a" || cadena[i] == "e" || cadena[i] == "i" || cadena[i] == "o" || cadena[i] == "u"){
+        vocales++;
+      }else{
+        consonantes++;
+      }
+    }
+  }
+  console.info(`Vocales: ${vocales}, Consonantes: ${consonantes}`);
+}
+
+contarVocalesConsonantes("Hola Mundo");
+
+/**
+ * 19) Programa una función que valide que un texto sea un nombre 
+ * válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
+ */
+
+console.info("Ejercicio 19 - validar nombre");
+
+const validarNombre = (nombre) =>{
+  if(nombre == undefined){
+    console.warn("El nombre no se ha insertado");
+  }else{
+     let condicion = new RegExp("^[a-zA-Z]+");
+     let resultado = condicion.test(nombre);
+     console.info(`El siguiente nombre ${nombre} es valido: ${resultado}`);
+  }
+}
+
+validarNombre("Oscar Alvarado");
+
+/**
+ * 21) Programa una función que dado un array numérico devuelve otro array con los 
+ * números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].
+ */
+
+console.info("Ejercicio 21 - elevar numeros al cuadrado dentro de un arreglo");
+
+const elevarAlCuadrado = (arreglo=[]) => {
+  if(arreglo == [""]){
+    return "El arreglo no se ha insertado";
+  }else{
+    for(let i=0; i<arreglo.length; i++){
+      arreglo[i] = Math.pow(arreglo[i],2);
+    }
+  }
+  return arreglo;
+}
+console.log(elevarAlCuadrado([]));
+
+/**
+ * 22) Programa una función que dado un array devuelva el número mas alto y el 
+ * más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].
+ */
+
+console.info("Ejercicio 22 - Determinar el valor minimo ya maximo de un arreglo");
+
+function valorMinimoMaximo(arreglo=[]){
+  let numeroMayor = 0;
+  let numeroMenor = 0;
+  if(arreglo == []){
+    return "No se ha insertado nigun elemento en el arreglo";
+  }else{
+    let ordenado = arreglo.sort((a,b) => b-a);
+    for(let i=0; i<ordenado.length; i++){
+      if(i == 0){
+        numeroMayor = ordenado[i];
+      }else if(ordenado[i] == ordenado[ordenado.length-1]){
+        numeroMenor = ordenado[i];
+      }
+    }
+  }
+  console.log("El numero mayor es: " + numeroMayor);
+  console.log("El numero menor es: " + numeroMenor);
+}
+
+valorMinimoMaximo([1, 4, 5, 100, -70]);
