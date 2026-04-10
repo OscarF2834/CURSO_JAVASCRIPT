@@ -3,16 +3,18 @@
 texto, pe. miFuncion("Hola Mundo") devolverá 10.
 */
 
-function contarCaracteres(cadena){
-    if(!cadena){
-        console.warn("La cadena esta vacia")
-    }else{
-        console.log(`La cadena tiene ${cadena.length} caracteres`)
-    }
+function contarCaracteres(cadena) {
+  if (!cadena) {
+    console.warn("La cadena esta vacia");
+  } else {
+    console.log(`La cadena tiene ${cadena.length} caracteres`);
+  }
 
-    //o se puede hacer asi con el operador ternario:
+  //o se puede hacer asi con el operador ternario:
 
-    (!cadena) ? console.warn("La cadena esta vacia") : console.log(`La cadena tiene ${cadena.length} caracteres`)
+  !cadena
+    ? console.warn("La cadena esta vacia")
+    : console.log(`La cadena tiene ${cadena.length} caracteres`);
 }
 
 console.log(contarCaracteres("Hola como estas"));
@@ -22,8 +24,8 @@ console.log(contarCaracteres("Hola como estas"));
 caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá "Hola".
 */
 
-function textoRecortado(cadena,caracteres){
-    return cadena.slice(0,caracteres);
+function textoRecortado(cadena, caracteres) {
+  return cadena.slice(0, caracteres);
 }
 
 console.log(textoRecortado("Hola Mundo", 3));
@@ -31,16 +33,16 @@ console.log(textoRecortado("Hola Mundo", 3));
 /*
 3) Programa una función que dada una String te devuelva un Array de textos separados 
 por cierto caracter, pe. miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].
-*/ 
+*/
 
-const separarCadena = (cadena,caracter) =>{
-    return cadena.split(caracter);
-}
+const separarCadena = (cadena, caracter) => {
+  return cadena.split(caracter);
+};
 
 console.log(separarCadena("Hola que tal", " "));
 
-function separarTexto(cadena,caracter){
-    return cadena.split(caracter);
+function separarTexto(cadena, caracter) {
+  return cadena.split(caracter);
 }
 
 console.log(separarTexto("Hola que tal", " "));
@@ -50,10 +52,10 @@ console.log(separarTexto("Hola que tal", " "));
 devolverá Hola Mundo Hola Mundo Hola Mundo.
 */
 
-const repetirTexto = (cadena,veces) => {
-    let resultado = cadena.repeat(veces);
-    return resultado;
-}
+const repetirTexto = (cadena, veces) => {
+  let resultado = cadena.repeat(veces);
+  return resultado;
+};
 
 console.log(repetirTexto("Hola Mundo ", 3));
 
@@ -62,50 +64,50 @@ console.log(repetirTexto("Hola Mundo ", 3));
 devolverá "odnuM aloH".
 */
 
-function invertirTexto(cadena){
-    return cadena.split("").reverse().join("");
+function invertirTexto(cadena) {
+  return cadena.split("").reverse().join("");
 }
 
 console.log(invertirTexto("Hola Mundo"));
 
 /**
- * 6) Programa una función para contar el número de veces que se repite una palabra en un 
+ * 6) Programa una función para contar el número de veces que se repite una palabra en un
  * texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
-*/
+ */
 
-function contarVeces(cadena,palabra){
-    let palabras = cadena.toLowerCase().split(" ");
-    let cantidad = 0;
-    for(let i=0; i<palabras.length; i++){
-        if(palabras[i] === palabra){
-            cantidad++;
-        }
+function contarVeces(cadena, palabra) {
+  let palabras = cadena.toLowerCase().split(" ");
+  let cantidad = 0;
+  for (let i = 0; i < palabras.length; i++) {
+    if (palabras[i] === palabra) {
+      cantidad++;
     }
-    return cantidad;
+  }
+  return cantidad;
 }
 
 console.log(contarVeces("hola mundo adios mundo hola hola", "hola"));
 
 /**
- * 7) Programa una función que valide si una palabra o frase dada, es un 
+ * 7) Programa una función que valide si una palabra o frase dada, es un
  * palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
-*/
+ */
 
-function palindromo(cadena){
-    let cadenaInvertida = cadena.toLowerCase().split("").reverse().join("");
-    return (cadena === cadenaInvertida) ? true : false;
+function palindromo(cadena) {
+  let cadenaInvertida = cadena.toLowerCase().split("").reverse().join("");
+  return cadena === cadenaInvertida ? true : false;
 }
 
 console.log(palindromo("Salas"));
 
 /**
- * 8) Programa una función que elimine cierto patrón de caracteres de un texto 
+ * 8) Programa una función que elimine cierto patrón de caracteres de un texto
  * dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
-*/
+ */
 
-const eliminarPatron = (cadena,patron) => {
-    return cadena.replace(new RegExp(patron, "ig"),"");
-}
+const eliminarPatron = (cadena, patron) => {
+  return cadena.replace(new RegExp(patron, "ig"), "");
+};
 
 console.log(eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz"));
 
@@ -114,49 +116,51 @@ console.log(eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz"));
  */
 
 const numeroAleatorio = () => {
-    return Math.floor(Math.random() * (600 - 501 + 1) + 501);
-}
+  return Math.floor(Math.random() * (600 - 501 + 1) + 501);
+};
 
 console.log(numeroAleatorio());
 
 /**
- * 10) Programa una función que reciba un número y evalúe si es capicúa 
+ * 10) Programa una función que reciba un número y evalúe si es capicúa
  * o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.
  */
 
 const capicua = (numero) => {
-    if(numero === undefined){
-        console.warn("El numero no se inserto")
-    }else{
-        let capicua = numero.toString().split("").reverse().join("");
-        return(numero == capicua) ? console.info("El numero es capicua") : console.info("El numero no es capicua")
-    }
-}
+  if (numero === undefined) {
+    console.warn("El numero no se inserto");
+  } else {
+    let capicua = numero.toString().split("").reverse().join("");
+    return numero == capicua
+      ? console.info("El numero es capicua")
+      : console.info("El numero no es capicua");
+  }
+};
 
-(capicua(2002));
+capicua(2002);
 
 /**
- * 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) 
+ * 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1)
  * o no, pe. miFuncion(7) devolverá true.
  */
 
 const esPrimo = (numero) => {
-    if(numero == undefined){
-        console.warn("El numero no se ha insertado");
-        return;
+  if (numero == undefined) {
+    console.warn("El numero no se ha insertado");
+    return;
+  }
+  if (numero <= 1) {
+    console.log("El numero no es primo");
+    return;
+  }
+  for (let i = 2; i < numero; i++) {
+    if (numero % i == 0) {
+      console.info("El numero no es primo");
+      return;
     }
-    if(numero<=1){
-        console.log("El numero no es primo");
-        return;
-    }
-    for(let i = 2; i<numero; i++){
-            if(numero % i == 0){
-                console.info("El numero no es primo");
-                return;
-            }  
-    }
-    console.info("El numero es primo");
-}
+  }
+  console.info("El numero es primo");
+};
 
 esPrimo(10);
 
@@ -164,24 +168,24 @@ esPrimo(10);
  * 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
  */
 
-const esParImpar = (numero) =>{
-    if(numero == undefined){
-        console.warn("El numero no se ha insertado");
-    }else if(numero % 2 == 0){
-        console.info("El numero es par");
-    }else{
-        console.info("El numero es impar");
-    }
-}
+const esParImpar = (numero) => {
+  if (numero == undefined) {
+    console.warn("El numero no se ha insertado");
+  } else if (numero % 2 == 0) {
+    console.info("El numero es par");
+  } else {
+    console.info("El numero es impar");
+  }
+};
 
 esParImpar(5);
 
 /**
  * 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
-*/
+ */
 
-function convertirTemperatura(temperatura){
-    return (temperatura * 9/5) + 32;
+function convertirTemperatura(temperatura) {
+  return (temperatura * 9) / 5 + 32;
 }
 
 console.log(convertirTemperatura(10));
@@ -191,16 +195,74 @@ console.log(convertirTemperatura(10));
  */
 
 const factorial = (numero) => {
-    let resultado = 1;
-    if(numero == undefined){
-        console.warn("El numero no se ha insertado");
-    }else{
-        for(let i = 1; i<=numero; i++){
-            resultado *= i;
-        }
+  let resultado = 1;
+  if (numero == undefined) {
+    console.warn("El numero no se ha insertado");
+  } else {
+    for (let i = 1; i <= numero; i++) {
+      resultado *= i;
     }
-    return resultado;
-}
+  }
+  return resultado;
+};
 
 console.log(factorial(8));
+
+/**
+ * 15) Programa una función para convertir números de base binaria a
+ * decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.
+ */
+
+/*console.log("Ejercicio 15 convertidor de binario a decimal y viceversa");
+
+const convertirBase = (numero, base) => {
+  let resultado = 0;
+  if (base == 2) {
+    let binario = numero.toString();
+    for (let i = 0; i < binario.length; i++) {
+        let bit = Number(binario[i]);
+        if (bit !== 0 && bit !== 1) {
+          console.warn("El numero binario es invalido");
+          return;
+        }
+        let posicion = binario.length - 1 - i;
+        resultado += bit * Math.pow(2, posicion);
+    }
+  }else if(base == 10){
+    let decimal = numero.toString();
+    for(let i=0; i< decimal.length; i++){
+        let digito = Number(decimal[i]);
+        let posicion = decimal.length - 1 - i;
+        resultado += digito * Math.pow(10, posicion);
+    }
+  } 
+  return resultado;
+};
+
+convertirBase(100, 2); */
+
+/**
+ * 16) Programa una función que devuelva el monto final después de aplicar un 
+ * descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.
+ */
+
+const aplicarDescuento = (precio, descuento) => {
+    let resultado = precio - (precio * (descuento/100));
+    console.log(`El resultado del ${descuento}% de descuento del ${precio} es de: ${resultado}`);
+}
+
+aplicarDescuento(1000,20);
+
+/**
+ * 17) Programa una función que dada una fecha válida determine cuantos años han pasado 
+ * hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
+ */
+
+const calcularEdad = (fecha) => {
+    const fecha = new Date();
+    let edad = fecha.getFullYear() - fecha.getFullYear();
+    return edad;  
+}
+
+console.log(calcularEdad(new Date(1984,4,23)));
 
