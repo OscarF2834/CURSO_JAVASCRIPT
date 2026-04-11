@@ -242,19 +242,21 @@ const convertirBase = (numero, base) => {
 convertirBase(100, 2); */
 
 /**
- * 16) Programa una función que devuelva el monto final después de aplicar un 
+ * 16) Programa una función que devuelva el monto final después de aplicar un
  * descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.
  */
 
 const aplicarDescuento = (precio, descuento) => {
-    let resultado = precio - (precio * (descuento/100));
-    console.log(`El resultado del ${descuento}% de descuento del ${precio} es de: ${resultado}`);
-}
+  let resultado = precio - precio * (descuento / 100);
+  console.log(
+    `El resultado del ${descuento}% de descuento del ${precio} es de: ${resultado}`,
+  );
+};
 
-aplicarDescuento(1000,20);
+aplicarDescuento(1000, 20);
 
 /**
- * 17) Programa una función que dada una fecha válida determine cuantos años han pasado 
+ * 17) Programa una función que dada una fecha válida determine cuantos años han pasado
  * hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
  */
 
@@ -267,87 +269,97 @@ aplicarDescuento(1000,20);
 console.log(calcularEdad(new Date(1984,4,23)));*/
 
 /**
- * 18) Programa una función que dada una cadena de texto cuente el número de vocales 
+ * 18) Programa una función que dada una cadena de texto cuente el número de vocales
  * y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.
  */
 
-console.info("Ejercicio 18 - contar vocales y consonantes de una cadena de texto");
+console.info(
+  "Ejercicio 18 - contar vocales y consonantes de una cadena de texto",
+);
 
 const contarVocalesConsonantes = (cadena = undefined) => {
   let vocales = 0;
   let consonantes = 0;
-  if(cadena == undefined){
+  if (cadena == undefined) {
     console.warn("La cadena no se ha insertado");
-  }else{
-    for(let i=0; i<cadena.length; i++){
-      if(cadena[i] == "a" || cadena[i] == "e" || cadena[i] == "i" || cadena[i] == "o" || cadena[i] == "u"){
+  } else {
+    for (let i = 0; i < cadena.length; i++) {
+      if (
+        cadena[i] == "a" ||
+        cadena[i] == "e" ||
+        cadena[i] == "i" ||
+        cadena[i] == "o" ||
+        cadena[i] == "u"
+      ) {
         vocales++;
-      }else{
+      } else {
         consonantes++;
       }
     }
   }
   console.info(`Vocales: ${vocales}, Consonantes: ${consonantes}`);
-}
+};
 
 contarVocalesConsonantes("Hola Mundo");
 
 /**
- * 19) Programa una función que valide que un texto sea un nombre 
+ * 19) Programa una función que valide que un texto sea un nombre
  * válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
  */
 
 console.info("Ejercicio 19 - validar nombre");
 
-const validarNombre = (nombre) =>{
-  if(nombre == undefined){
+const validarNombre = (nombre) => {
+  if (nombre == undefined) {
     console.warn("El nombre no se ha insertado");
-  }else{
-     let condicion = new RegExp("^[a-zA-Z]+");
-     let resultado = condicion.test(nombre);
-     console.info(`El siguiente nombre ${nombre} es valido: ${resultado}`);
+  } else {
+    let condicion = new RegExp("^[a-zA-Z]+");
+    let resultado = condicion.test(nombre);
+    console.info(`El siguiente nombre ${nombre} es valido: ${resultado}`);
   }
-}
+};
 
 validarNombre("Oscar Alvarado");
 
 /**
- * 21) Programa una función que dado un array numérico devuelve otro array con los 
+ * 21) Programa una función que dado un array numérico devuelve otro array con los
  * números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].
  */
 
 console.info("Ejercicio 21 - elevar numeros al cuadrado dentro de un arreglo");
 
-const elevarAlCuadrado = (arreglo=[]) => {
-  if(arreglo == [""]){
+const elevarAlCuadrado = (arreglo = []) => {
+  if (arreglo == [""]) {
     return "El arreglo no se ha insertado";
-  }else{
-    for(let i=0; i<arreglo.length; i++){
-      arreglo[i] = Math.pow(arreglo[i],2);
+  } else {
+    for (let i = 0; i < arreglo.length; i++) {
+      arreglo[i] = Math.pow(arreglo[i], 2);
     }
   }
   return arreglo;
-}
+};
 console.log(elevarAlCuadrado([]));
 
 /**
- * 22) Programa una función que dado un array devuelva el número mas alto y el 
+ * 22) Programa una función que dado un array devuelva el número mas alto y el
  * más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].
  */
 
-console.info("Ejercicio 22 - Determinar el valor minimo ya maximo de un arreglo");
+console.info(
+  "Ejercicio 22 - Determinar el valor minimo ya maximo de un arreglo",
+);
 
-function valorMinimoMaximo(arreglo=[]){
+function valorMinimoMaximo(arreglo = []) {
   let numeroMayor = 0;
   let numeroMenor = 0;
-  if(arreglo == []){
+  if (arreglo == []) {
     return "No se ha insertado nigun elemento en el arreglo";
-  }else{
-    let ordenado = arreglo.sort((a,b) => b-a);
-    for(let i=0; i<ordenado.length; i++){
-      if(i == 0){
+  } else {
+    let ordenado = arreglo.sort((a, b) => b - a);
+    for (let i = 0; i < ordenado.length; i++) {
+      if (i == 0) {
         numeroMayor = ordenado[i];
-      }else if(ordenado[i] == ordenado[ordenado.length-1]){
+      } else if (ordenado[i] == ordenado[ordenado.length - 1]) {
         numeroMenor = ordenado[i];
       }
     }
@@ -357,3 +369,96 @@ function valorMinimoMaximo(arreglo=[]){
 }
 
 valorMinimoMaximo([1, 4, 5, 100, -70]);
+
+/**
+ * 23) Programa una función que dado un array de números devuelva un objeto con
+ * 2 arreglos en el primero almacena los números pares y en el segundo los impares,
+ * pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.
+ */
+
+console.info(
+  "Ejercicio 23 - convertir un arreglo en un objeto con pares e impares",
+);
+
+const paresImpares = (arreglo = []) => {
+  let pares = [];
+  let impares = [];
+  if (arreglo.length == 0) {
+    console.warn("El arreglo no se ha insertado");
+  }
+  for (let i = 0; i < arreglo.length; i++) {
+    if (arreglo[i] % 2 == 0) {
+      pares.push(arreglo[i]);
+    } else {
+      impares.push(arreglo[i]);
+    }
+  }
+  return { pares, impares };
+};
+
+console.log(paresImpares([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
+
+/**
+ * 24) Programa una función que dado un arreglo de números devuelva un objeto con
+ * dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el
+ * segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }.
+ */
+
+console.info(
+  "Ejercicio 24 - Devolver objeto con dos arreglos, uno ascendente y el otro descendente",
+);
+
+const objetoAscendenteDescendente = (arreglo = []) => {
+  if (!Array.isArray(arreglo) || arreglo.length === 0) {
+    console.warn(
+      "Lo insertado no es un arreglo o no se insertaron datos en la estructura",
+    );
+    return;
+  }
+
+  const ascendente = [...arreglo].sort((a, b) => a - b);
+  const descendente = [...arreglo].sort((a, b) => b - a);
+
+  return { ascendente, descendente };
+};
+
+console.log(objetoAscendenteDescendente([7, 5, 7, 8, 6]));
+
+/**
+ * 25) Programa una función que dado un arreglo de elementos, elimine los duplicados,
+ * pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true].
+ */
+
+console.info("Ejercicio 25 - Eliminar duplicados de un arreglo");
+
+const eliminarDuplicados = (arreglo = []) => {
+  let resultado = [];
+  resultado = [...new Set(arreglo)];
+  return resultado;
+};
+
+console.log(eliminarDuplicados(["x", 10, "x", 2, "10", 10, true, true]));
+
+/**
+ * 26) Programa una función que dado un arreglo de números obtenga el promedio,
+ * pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5.
+ */
+
+const promedioArreglo = (arreglo = []) => {
+  let suma = 0;
+    promedio = 0;
+
+  if (!Array.isArray(arreglo) || arreglo.length === 0) {
+    console.warn("El arreglo no es de numeros o no se ha insertado");
+    return;
+  } 
+
+  for (let i = 0; i < arreglo.length; i++) {
+      suma += arreglo[i];
+  }
+
+  promedio = suma / arreglo.length;
+  return promedio;
+};
+
+console.log(promedioArreglo([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]));
