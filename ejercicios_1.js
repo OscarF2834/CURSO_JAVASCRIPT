@@ -480,9 +480,7 @@ año de estreno, país o países de origen, géneros y calificación en IMBD.
     Valida que el año de estreno sea un número entero de 4 dígitos.
     Valida que el país o paises sea introducidos en forma de arreglo.
     Valida que los géneros sean introducidos en forma de arreglo.
-    Valida que los géneros introducidos esten dentro de los géneros 
-
-     aceptados*.
+    Valida que los géneros introducidos esten dentro de los géneros aceptados*.
 
     Crea un método estático que devuelva los géneros aceptados*.
     Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
@@ -509,5 +507,53 @@ class Pelicula {
     this.pais = pais;
     this.generos = generos;
     this.calificacion = calificacion;
+
+    this.validarIMDB();
+    this.validarTitulo();
+    this.validarDirector();
+    this.validarEstreno();
   }
+
+  validarCadena(propiedad,valor){
+      if(!valor) return console.warn(`${propiedad} "${valor}" esta vacio`);
+      if(typeof valor !== "string") return console.error(`${propiedad} "${valor}" ingresado no es una cadena de texto`);
+      return true;
+  }
+
+  validarLongitudCadena(propiedad,valor,longitud){
+    if(valor.length > longitud) return console.error(`${propiedad} "${valor}" supera los ${longitud} caracteres`);
+    return true;
+  }
+
+  validarIMDB(id){
+    if(this.validarCadena("IMDB id",id)){
+      if(!/^[a-z]{2}[0-9]{7}$/.test(id)){
+        return console.error(`IMDB id ${id} no es valido, debe tener 9 caracteres, los cuales 
+          debe tener 2 letras minusculas y despues 7 numeros`);
+      }
+    }
+  }
+
+  validarTitulo(titulo){
+    if(this.validarCadena("titulo",titulo)){
+      this.validarLongitudCadena("titulo",titulo,100);
+    }
+  }
+
+  validarDirector(director){
+    if(this.validarCadena("director",director)){
+      this.validarLongitudCadena("director",director,50);
+    }
+  }
+
+  validarEstreno(estreno){
+    if(!/^[0-9]{4}$/.test(estreno)){
+      return console.error(`la fecha de estreno ${estreno} no es valido, debe tener 4 numeros, los cuales 
+          indican el año en que salio la pelicula`);
+    }
+  }
+
 }
+
+
+const peli = new Pelicula();
