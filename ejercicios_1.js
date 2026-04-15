@@ -446,15 +446,15 @@ console.log(eliminarDuplicados(["x", 10, "x", 2, "10", 10, true, true]));
 
 const promedioArreglo = (arreglo = []) => {
   let suma = 0;
-    promedio = 0;
+  promedio = 0;
 
   if (!Array.isArray(arreglo) || arreglo.length === 0) {
     console.warn("El arreglo no es de numeros o no se ha insertado");
     return;
-  } 
+  }
 
   for (let i = 0; i < arreglo.length; i++) {
-      suma += arreglo[i];
+    suma += arreglo[i];
   }
 
   promedio = suma / arreglo.length;
@@ -496,10 +496,10 @@ año de estreno, país o países de origen, géneros y calificación en IMBD.
     Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, 
     Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, 
     Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
- */ 
+ */
 
 class Pelicula {
-  constructor({id, titulo, director, estreno, pais, generos, calificacion}){
+  constructor({ id, titulo, director, estreno, pais, generos, calificacion }) {
     this.id = id;
     this.titulo = titulo;
     this.director = director;
@@ -508,52 +508,142 @@ class Pelicula {
     this.generos = generos;
     this.calificacion = calificacion;
 
-    this.validarIMDB();
-    this.validarTitulo();
-    this.validarDirector();
-    this.validarEstreno();
+    this.validarIMDB(id);
+    this.validarTitulo(titulo);
+    this.validarDirector(director);
+    this.validarEstreno(estreno);
+    this.validarPais(pais);
   }
 
-  validarCadena(propiedad,valor){
-      if(!valor) return console.warn(`${propiedad} "${valor}" esta vacio`);
-      if(typeof valor !== "string") return console.error(`${propiedad} "${valor}" ingresado no es una cadena de texto`);
-      return true;
+  static get listaGeneros() {
+    return [
+      "Action",
+      "Adult",
+      "Adventure",
+      "Animation",
+      "Biography",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "Film Noir",
+      "Game-Show",
+      "History",
+      "Horror",
+      "Musical",
+      "Music",
+      "Mystery",
+      "News",
+      "Reality-TV",
+      "Romance",
+      "Sci-Fi",
+      "Short",
+      "Sport",
+      "Talk-Show",
+      "Thriller",
+      "War",
+      "Western",
+    ];
   }
 
-  validarLongitudCadena(propiedad,valor,longitud){
-    if(valor.length > longitud) return console.error(`${propiedad} "${valor}" supera los ${longitud} caracteres`);
+  static generosAceptados() {
+    return console.info(
+      `Los generos aceptados son: ${Pelicula.listaGeneros.join(", ")}`,
+    );
+  }
+
+  validarArreglo(propiedad, valor) {
+    if (!valor) return console.warn(`${propiedad} esta vacio`);
+    if ((!valor) instanceof Array)
+      return console.error(`${propiedad} no es un arreglo`);
+    if (valor.length === 0) return console.error(`${propiedad} esta vacio`);
+    for (const cadena of valor) {
+      if (typeof cadena !== "string")
+        return console.error(
+          `${propiedad} no es un arreglo de cadenas de texto`,
+        );
+    }
     return true;
   }
 
-  validarIMDB(id){
-    if(this.validarCadena("IMDB id",id)){
-      if(!/^[a-z]{2}[0-9]{7}$/.test(id)){
+  validarCadena(propiedad, valor) {
+    if (!valor) return console.warn(`${propiedad} "${valor}" esta vacio`);
+    if (typeof valor !== "string")
+      return console.error(
+        `${propiedad} "${valor}" ingresado no es una cadena de texto`,
+      );
+    return true;
+  }
+
+  validarNumero(propiedad, valor) {
+    if (!valor) return console.warn(`${propiedad} "${valor}" esta vacio`);
+    if (typeof valor !== "number")
+      return console.error(`${propiedad} "${valor}" ingresado no es un numero`);
+    return true;
+  }
+
+  validarLongitudCadena(propiedad, valor, longitud) {
+    if (valor.length > longitud)
+      return console.error(
+        `${propiedad} "${valor}" supera los ${longitud} caracteres`,
+      );
+    return true;
+  }
+
+  validarIMDB(id) {
+    if (this.validarCadena("IMDB id", id)) {
+      if (!/^[a-z]{2}[0-9]{7}$/.test(id)) {
         return console.error(`IMDB id ${id} no es valido, debe tener 9 caracteres, los cuales 
           debe tener 2 letras minusculas y despues 7 numeros`);
       }
     }
   }
 
-  validarTitulo(titulo){
-    if(this.validarCadena("titulo",titulo)){
-      this.validarLongitudCadena("titulo",titulo,100);
+  validarTitulo(titulo) {
+    if (this.validarCadena("titulo", titulo)) {
+      this.validarLongitudCadena("titulo", titulo, 100);
     }
   }
 
-  validarDirector(director){
-    if(this.validarCadena("director",director)){
-      this.validarLongitudCadena("director",director,50);
+  validarDirector(director) {
+    if (this.validarCadena("director", director)) {
+      this.validarLongitudCadena("director", director, 50);
     }
   }
 
-  validarEstreno(estreno){
-    if(!/^[0-9]{4}$/.test(estreno)){
-      return console.error(`la fecha de estreno ${estreno} no es valido, debe tener 4 numeros, los cuales 
+  validarEstreno(estreno) {
+    if (this.validarNumero("Año de estreno", estreno)) {
+      if (!/^[0-9]{4}$/.test(estreno)) {
+        return console.error(`la fecha de estreno ${estreno} no es valido, debe tener 4 numeros, los cuales 
           indican el año en que salio la pelicula`);
+      }
+    }
+  }
+
+  validarPais(pais) {
+    this.validarArreglo("pais", pais);
+  }
+
+  validarGeneros(generos) {
+    if (this.validarArreglo("generos", generos)) {
+      for (const genero of generos) {
+        if (!Pelicula.listaGeneros.includes(genero)) {
+          console.error(`${genero} no es un genero aceptado`);
+          Pelicula.generosAceptados();
+        }
+      }
     }
   }
 
 }
 
-
-const peli = new Pelicula();
+const peli = new Pelicula({
+  id: "tt1234567",
+  titulo: "Pasion de Cristo",
+  director: "Mel gibson",
+  estreno: 2004,
+  pais: ["Italia", "Estados Unidos"],
+  generos: ["Drama", "History"]
+});
