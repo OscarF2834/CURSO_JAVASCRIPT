@@ -513,6 +513,8 @@ class Pelicula {
     this.validarDirector(director);
     this.validarEstreno(estreno);
     this.validarPais(pais);
+    this.validarGeneros(generos);
+    this.validarCalificacion(calificacion);
   }
 
   static get listaGeneros() {
@@ -637,6 +639,13 @@ class Pelicula {
     }
   }
 
+  validarCalificacion(calificacion) {
+    if (this.validarCalificacion("calificacion", calificacion)) {
+      return (calificacion < 0 || calificacion > 10) ? console.error(`La calificacion tiene que estar en un rango
+        de 0 a 10`) : this.calificacion = calificacion.toFixed(1);
+    }
+  }
+
 }
 
 const peli = new Pelicula({
@@ -645,5 +654,5 @@ const peli = new Pelicula({
   director: "Mel gibson",
   estreno: 2004,
   pais: ["Italia", "Estados Unidos"],
-  generos: ["Drama", "History"]
+  generos: ["Drama", "History"],
 });
