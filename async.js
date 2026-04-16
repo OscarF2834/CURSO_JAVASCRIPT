@@ -9,3 +9,7 @@ setTimeout(()=>{
 setInterval(()=>{
     console.info(new Date().toLocaleTimeString())
 },1000);
+
+/**
+ * Conceptos de asincronia, codigos bloqueantes y no bloqueantes
+ */
