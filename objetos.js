@@ -31,3 +31,18 @@ const vendedor = {
 }
 
 console.log(vendedor.vender());
+
+const gato ={
+    nombre: "Valiente",
+    duerme: true,
+    edad: 10,
+    enemigos: ["agua", "perro"]
+}
+
+for(propiedad in gato){
+    console.log(gato[propiedad]);
+}
+
+Object.values(gato.forEach(propiedad => {
+    console.log(propiedad);
+}));
