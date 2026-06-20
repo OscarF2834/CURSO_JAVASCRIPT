@@ -16,9 +16,9 @@ class Perro extends Animal{
         super(especie,edad,color);
         this.raza = raza;
     }
-    /*static ladrar(){
+    static ladrar(){
         alert("¡WAW!");
-    }*/
+    }
     set setRaza(newName){
         this.raza = newName;
     }

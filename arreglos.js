@@ -23,4 +23,4 @@ frase = `El nombre de la computadora es ${nombre} <br>
         y de espacio tiene en total ${espacio}`;
 
 
-document.writeln(frase + "<br>");
+document.writeln(frase + "<br>");spec
