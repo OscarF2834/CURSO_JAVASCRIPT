@@ -26,3 +26,19 @@ console.log(nombreGato, edad, enemigos);
 console.log(gato.nombreGato);
 console.log(gato.nuevoNombreGato = "Bigotes");
 console.log(gato.agregarEnemigos = "Oscar")
+
+//Destruccturacion en arreglos y en objetos
+
+const numeros = [10,20,30,40];
+
+let[one,two,three,four] = numeros
+console.log(one.two,three,four);
+
+const persona = {
+    nombre="Oscar",
+    apellido="Alvarado",
+    edad=21
+}
+
+let{nombre,apellido,edad} = persona;
+console.log(nombre,apellido,edad);
