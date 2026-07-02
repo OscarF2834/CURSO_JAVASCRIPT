@@ -19,6 +19,12 @@ function contarCaracteres(cadena) {
 
 console.log(contarCaracteres("Hola como estas"));
 
+const conteoCaracteres = (cadena = "") => {
+  !cadena ? console.warn("No existe la cadena") : console.info(`La cadena ${cadena} tiene ${cadena.length} caracteres`);
+}
+
+conteoCaracteres("Hola mundo")
+
 /*
 2) Programa una función que te devuelva el texto recortado según el número de 
 caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá "Hola".
@@ -29,6 +35,11 @@ function textoRecortado(cadena, caracteres) {
 }
 
 console.log(textoRecortado("Hola Mundo", 3));
+
+const recortarTexto = (cadena = "",caracteres = undefined) =>{
+  !cadena ? console.warn("No ingreso el texto") 
+  : console.info(cadena.slice(0,caracteres));
+}
 
 /*
 3) Programa una función que dada una String te devuelva un Array de textos separados 
@@ -46,6 +57,12 @@ function separarTexto(cadena, caracter) {
 }
 
 console.log(separarTexto("Hola que tal", " "));
+
+const separoCadena = (cadena = "",caracter = undefined) => {
+  !cadena ? console.warn("No se inserto la cadena")
+  : (!caracter === undefined? console.warn("No inserto el caracter que separa la cadena de texto")
+    : console.info(cadena.split(caracter)))
+};
 
 /*
 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) 
