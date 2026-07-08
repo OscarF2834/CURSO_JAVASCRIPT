@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asincronia en javascript</title>
+  </head>
+  <body>
+    <h1>Asincronia en javascript</h1>
+    <script>
+      /*Iniciamos con  el tema de los temporizadores en javascript, importantes para la 
+        Programacion Asincrona*/
+      console.log("Inicio del temporizador");
+
+      setTimeout(() => {
+        console.log("Ejecutando un setTimeout, esto se ejecuta una sola vez");
+      }, 3000);
+
+      console.log("Ya se ejecuto una sola vez el temporizador setTimeout");
+
+      let temporizador = setInterval(() => {
+        console.log(`Ejecutando un setInterval, esto se ejecuta indefinididamente por el tiempo que
+            le pasamos al setInterval`);
+      }, 3000);
+
+      setInterval(() => {
+        console.log(new Date().toLocaleTimeString());
+      }, 1000);
+      //Esto sirve para limpiar el setInterval o el temporizador
+      clearInterval(temporizador);
+
+      //Los callbacks
+
+      function cuadradoCallback(value, callback) {
+        setTimeout(
+          () => {
+            callback(value, value * value);
+          },
+          0 | (Math.random() * 1000),
+        );
+      }
+
+      cuadradoCallback(0, (value, result) => {
+        console.log("Inicio de la callback");
+        console.log(`Callback: ${value} , ${result}`);
+
+        cuadradoCallback(1, (value, result) => {
+          console.log(`Callback: ${value} , ${result}`);
+
+          cuadradoCallback(2, (value, result) => {
+            console.log(`Callback: ${value} , ${result}`);
+
+            //Los callbacks
+
+            function cuadradoCallback(value, callback) {
+              setTimeout(
+                () => {
+                  callback(value, value * value);
+                },
+                0 | (Math.random() * 100),
+              );
+            }
+
+            cuadradoCallback(0, (value, result) => {
+              console.log("Inicio de la callback");
+              console.log(`Callback: ${value} , ${result}`);
+
+              cuadradoCallback(1, (value, result) => {
+                console.log(`Callback: ${value} , ${result}`);
+
+                cuadradoCallback(2, (value, result) => {
+                  console.log(`Callback: ${value} , ${result}`);
+
+                  cuadradoCallback(3, (value, result) => {
+                  console.log(`Callback: ${value} , ${result}`);
+                });
+                });
+              });
+            });
+          });
+        });
+      });
+
+    //las promesas
+    function elevoAlCuadrado(numero){
+        return new Promise((resolve,reject)=>{
+            setTimeout(() => {
+                if(typeof numero !== "number"){
+                    reject(`Èl ${numero} no es un numero`);;
+                }else{
+                    const resultado = Math.pow(numero,2);
+                    resolve({
+                        numero,
+                        cuadrado: resultado
+                    });
+                }
+            }, 1000);
+        });
+    }
+
+    //Aqui se hace el consumo de la promesa:
+    elevoAlCuadrado(2).then((resultado1)=>{
+        console.log(`El resultado es ${resultado1.numero} es de ${resultado1.cuadrado}`)
+    })
+    </script>
+  </body>
+</html>
