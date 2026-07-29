@@ -1,0 +1,12 @@
+{
+    "cadena": "Oscar",
+    "numero": "21",
+    "booleano": "true",
+    "arreglo": ["correr", "programar", "cocinar"],
+    "objeto": {
+        "twitter": "no tengo",
+        "email": "pipesegoviaalvarado@gmail.com"
+    },
+    "nulo": null
+}
+
