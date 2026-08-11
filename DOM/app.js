@@ -1,4 +1,4 @@
-console.log("Hola Mundo 😁")
+/*console.log("Hola Mundo 😁")
 console.log(document);
 
 //INTERACTUANDO CON EL DOM.
@@ -22,9 +22,17 @@ setTimeout(() => {
 
 //escribir algo en el documento. No es recomendable usarlo,, pero esta ahy.
 document.write("<h2>Hola mundo</h2>");
+*/
 
 //INTERACTUAR CON LOS NODOS, ELEMENTOS Y SELECTORES.
+//Con los nodos
+console.log(document.getElementsByTagName("li"));
+console.log(document.getElementsByClassName("card"));
+console.log(document.getElementsByName("nombre"));
+console.log(document.getElementById("menu"));
 
+console.log(document.querySelector("#menu"));
+console.log(document.querySelector("a"));
+console.log(document.querySelectorAll("a"));
 
-
-
+document.querySelectorAll("a").forEach(el => console.log(el));
