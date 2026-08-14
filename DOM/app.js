@@ -146,6 +146,7 @@ $card.classList.toggle("opacity-80","sepia");
 */
 
 //interactuar con el contenido en html.
+/*
 const $whatIsDom = document.getElementById("que-es");
 
 let text = `
@@ -166,3 +167,26 @@ $whatIsDom.textContent = text;
 $whatIsDom.innerHTML = text;
 //pone a los parrafos de forma independiente, sin el parrafo con id = "que-es"
 $whatIsDom.outerHTML = text;
+
+*/
+
+/*
+const $cards = document.querySelector(".cards");
+console.log($cards);
+console.log($cards.children);
+console.log($cards.children[2]);
+console.log($cards.parentElement);
+console.log($cards.firstElementChild);
+console.log($cards.lastElementChild);
+console.log($cards.previousSibling);
+console.log($cards.closest("div"));
+console.log($cards.closest("body"));
+console.log($cards.children[3].closest("section"));
+*/
+
+//Creando Elementos y Fragmentos.
+const $figure = document.createElement("figure"),
+    $img = document.createElement("img"),
+    $figcaption = document.createElement("figcaption"),
+    $figcaptionText = document.createTextNode("Animals"),
+    $cards = document.querySelector(".cards");
